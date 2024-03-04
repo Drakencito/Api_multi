@@ -1,0 +1,1 @@
+export const T0KEN_SECRET = 'random ssecret key'
