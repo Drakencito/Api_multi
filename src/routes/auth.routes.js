@@ -21,7 +21,7 @@ const userLimiter = rateLimit({
 
 const createUserLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, //1 día
-  max: 2, //2 peticiones por día
+  max: 4, //2 peticiones por día
   message: createUserMessage,
 });
 

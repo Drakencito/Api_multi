@@ -3,7 +3,7 @@ import Application from "../models/applications.model.js";
 export const getApplications =  async (req,res)=>{
     const applications = await Application.find({
        userId:req.user.id
-    }).populate('userId')
+    })
     res.json(applications);
 }
 
@@ -32,11 +32,11 @@ export const updateApplications =  async(req,res)=>{
         new:true
     });
     if(!application) return res.status(404).json({message:"application not found"})
-    res.json(application)
+    res.json({message:"application updated"})
 }
 
 export const deleteApplications =  async(req,res)=>{
     const application = await Application.findByIdAndDelete(req.params.id);
     if(!application) return res.status(404).json({message:"application not found"})
-    res.json(application)
+    res.json({message:"application deleted"})
 }

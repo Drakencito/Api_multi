@@ -10,7 +10,7 @@ const createApplicationMessage = "Usted ya ha sobrepasado el limite de solicitud
 
 const createApplicationLimiter = rateLimit({
     windowMs: 24 * 24 * 60 * 60 * 1000, //1 día
-    max: 2, //2 peticiones por mes, se usa 24 para no sobrepasar el valor maximo d 32 bits
+    max: 5, //2 peticiones por mes, se usa 24 para no sobrepasar el valor maximo d 32 bits
     message: createApplicationMessage,
 });
 
