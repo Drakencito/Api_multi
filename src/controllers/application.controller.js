@@ -1,11 +1,24 @@
 import Application from "../models/applications.model.js";
+import User from "../models/user.model.js";
 
-export const getApplications =  async (req,res)=>{
-    const applications = await Application.find({
-       userId:req.user.id
-    })
+
+export const getApplications = async (req, res) => {
+    const userId = req.user.id;
+
+    const user = await User.findById(userId);
+    const rol = user.rol; 
+
+    const filter = {}; 
+
+    if (rol === "user") {
+        filter.userId = userId;
+    }
+
+    const applications = await Application.find(filter);
+
     res.json(applications);
-}
+};
+
 
 export const getApplication =  async(req,res)=>{
     const application = await Application.findById(req.params.id);
