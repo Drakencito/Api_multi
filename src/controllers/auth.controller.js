@@ -3,8 +3,8 @@ import bcrypt from 'bcryptjs';
 import  {createAccessToken} from "../libs/jwt.js";
 
 export const register = async (req,res) => {
-    const {email,password,name,gender,age,rol}=req.body
-    console.log(email,password,name,gender,age,rol)
+    const {email,password,name,gender,age}=req.body
+    console.log(email,password,name,gender,age)
     
     
 

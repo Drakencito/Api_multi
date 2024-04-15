@@ -2,6 +2,8 @@ import { Router } from "express";
 import { login, register, logout, userProfile } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 import { rateLimit } from "express-rate-limit";
+import { validateSchema } from "../middlewares/validator.middleware.js";
+import { registerSchema,loginSchema } from "../schemas/auth.schema.js";
 
 const loginMessage = "Demasiados intentos de inicio de sesión. Intenta de nuevo más tarde.";
 const userMessage = "Demasiadas peticiones. Intenta de nuevo más tarde.";
@@ -27,8 +29,8 @@ const createUserLimiter = rateLimit({
 
 const router = Router();
 
-router.post("/register", createUserLimiter, register);
-router.post("/login", loginLimiter, login);
+router.post("/register", createUserLimiter,validateSchema(registerSchema), register);
+router.post("/login", loginLimiter,validateSchema(loginSchema) ,login);
 router.post("/logout", logout);
 
 router.get("/userProfile", authRequired, userProfile);
