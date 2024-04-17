@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 export const connectDB = async () =>{
     try{
-        await mongoose.connect("mongodb+srv://adrii:Adr321esp@eolicpower.rzklbfz.mongodb.net/eolicPowerDb");
+        await mongoose.connect('mongodb://54.227.142.31:27017/eolicPowerDb');
         console.log("db is connected")
     }catch(error){
         console.log(error);

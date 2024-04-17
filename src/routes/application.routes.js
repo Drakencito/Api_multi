@@ -19,7 +19,7 @@ const router = Router();
 
 router.get('/applications', authRequired,getApplications);
 router.get('/applications/:id', authRequired,getApplication);
-router.post('/applications',createApplicationLimiter, authRequired,createApplications);
+router.post('/applications', authRequired,createApplications);
 router.delete('/applications/:id', authRequired,deleteApplications);
 router.put('/applications/:id', authRequired,updateApplications);
 
